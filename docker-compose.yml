@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./web
+    container_name: brainai_web
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - server
+    command: ["npm", "run", "dev"]
+    restart: unless-stopped
+
+  server:
+    build: ./server
+    container_name: brainai_server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=development
+      - DB_PATH=/app/data/brainai.db
+    restart: unless-stopped
+
+  dbview:
+    image: linuxserver/sqlitebrowser:latest
+    container_name: brainai_db_browser
+    ports:
+      - "8080:3000"
+    volumes:
+      - ./data:/config
+    restart: unless-stopped

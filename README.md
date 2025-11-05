@@ -1,2 +1,5 @@
-# Brain AI
-자폐/스펙트럼 아동과 AI 대화 및 보호자 알림 서비스 (Express + React)
+# 🧠 Brain-AI v5.3 — Full Stack Setup
+
+## 실행
+```bash
+bash setup_brainai_stack.sh
