@@ -25,15 +25,15 @@ read -p "선택 번호 입력: " choice
 case $choice in
   1)
     echo -e "${YELLOW}🧱 Docker Compose 기반 Brain-AI 스택 설치 중...${NC}"
-    bash ./tmp/setup_brainai_stack.sh
+    bash ./workspaces/Brain-AI/tmp/setup_brainai_stack.sh
     ;;
   2)
     echo -e "${YELLOW}🧩 DB 서버 실행 중...${NC}"
-    bash ./tmp/db_server.sh
+    bash ./workspaces/Brain-AI/tmp/db_server.sh
     ;;
   3)
     echo -e "${YELLOW}🔐 HTTPS 설정 (Route53 + Certbot)...${NC}"
-    bash ./tmp/setup_paradocs.sh
+    bash ./workspaces/Brain-AI/tmp/setup_paradocs.sh
     ;;
   4)
     echo -e "${YELLOW}🚀 GitHub Actions CI/CD 파이프라인 생성 중...${NC}"

@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps { git branch: 'main', url: 'https://github.com/<YOUR_ID>/Brain-AI.git' }
+    }
+    stage('Build Docker Image') {
+      steps {
+        sh 'docker-compose build'
+      }
+    }
+    stage('Deploy Containers') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
+  }
+  post {
+    success {
+      echo '✅ Brain-AI 재배포 완료'
+    }
+    failure {
+      echo '❌ 배포 실패'
+    }
+  }
+}
